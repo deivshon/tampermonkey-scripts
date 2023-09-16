@@ -30,7 +30,7 @@ const isActualBox = (box) => {
 const main = async () => {
   let boxes = [];
 
-  while (boxes.length !== 4) {
+  while (boxes.length !== 3) {
     boxes = document.getElementsByTagName("header");
     boxes = Array.prototype.slice.call(boxes);
     boxes = boxes.filter((b) => isActualBox(b));
