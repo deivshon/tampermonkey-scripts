@@ -20,6 +20,7 @@ const main = () => {
 
   url.searchParams.set("useskin", "vector");
   window.location.href = url.toString();
+  history.replaceState(null, "", url);
 };
 
 main();
