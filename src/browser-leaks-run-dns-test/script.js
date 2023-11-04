@@ -11,8 +11,8 @@
 "use strict";
 
 const main = () => {
-    const dnsTestButton = document.getElementById("dns-run")
-    dnsTestButton.click()
-}
+    const dnsTestButton = document.getElementById("dns-run");
+    dnsTestButton.click();
+};
 
-main()
+main();

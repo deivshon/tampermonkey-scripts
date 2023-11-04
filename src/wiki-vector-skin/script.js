@@ -15,12 +15,12 @@ const SKIN_PARAM_KEY = "useskin";
 const SKIN_PARAM_VALUE = "vector";
 
 const main = () => {
-  const url = new URL(window.location.href);
-  if (url.searchParams.get(SKIN_PARAM_KEY) === SKIN_PARAM_VALUE) return;
+    const url = new URL(window.location.href);
+    if (url.searchParams.get(SKIN_PARAM_KEY) === SKIN_PARAM_VALUE) return;
 
-  url.searchParams.set("useskin", "vector");
-  window.location.href = url.toString();
-  history.replaceState(null, "", url);
+    url.searchParams.set("useskin", "vector");
+    window.location.href = url.toString();
+    history.replaceState(null, "", url);
 };
 
 main();

@@ -11,42 +11,42 @@
 "use strict";
 
 const sleep = async (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 const stillLoading = (box) => {
-  return box.classList.contains("bg-loading");
+    return box.classList.contains("bg-loading");
 };
 
 const isActualBox = (box) => {
-  return (
-    box.classList.contains("bg-warning") ||
-    box.classList.contains("bg-danger") ||
-    box.classList.contains("bg-loading") ||
-    box.classList.contains("bg-success")
-  );
+    return (
+        box.classList.contains("bg-warning") ||
+        box.classList.contains("bg-danger") ||
+        box.classList.contains("bg-loading") ||
+        box.classList.contains("bg-success")
+    );
 };
 
 const main = async () => {
-  let boxes = [];
+    let boxes = [];
 
-  while (boxes.length !== 3) {
-    boxes = document.getElementsByTagName("header");
-    boxes = Array.prototype.slice.call(boxes);
-    boxes = boxes.filter((b) => isActualBox(b));
-    await sleep(100);
-  }
-
-  while (boxes.length > 0) {
-    for (let i = 0; i < boxes.length; i++) {
-      if (!stillLoading(boxes[i])) {
-        boxes[i].click();
-        boxes.splice(i, 1);
-        i--;
-      }
+    while (boxes.length !== 3) {
+        boxes = document.getElementsByTagName("header");
+        boxes = Array.prototype.slice.call(boxes);
+        boxes = boxes.filter((b) => isActualBox(b));
+        await sleep(100);
     }
-    await sleep(100);
-  }
+
+    while (boxes.length > 0) {
+        for (let i = 0; i < boxes.length; i++) {
+            if (!stillLoading(boxes[i])) {
+                boxes[i].click();
+                boxes.splice(i, 1);
+                i--;
+            }
+        }
+        await sleep(100);
+    }
 };
 
 main();
