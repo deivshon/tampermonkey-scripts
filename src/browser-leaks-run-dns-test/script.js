@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         browser-leaks-run-dns-test
 // @namespace    https://github.com/deivshon
-// @version      1.0
+// @version      1.0.1
 // @description  Automatically run the DNS test on browserleaks's IP page
 // @author       Davide Cioni
 // @match        https://browserleaks.com/ip
@@ -10,9 +10,12 @@
 
 "use strict";
 
-const main = () => {
+(() => {
     const dnsTestButton = document.getElementById("dns-run");
-    dnsTestButton.click();
-};
+    if (!dnsTestButton) {
+        console.error("Could not find the DNS test button");
+        return;
+    }
 
-main();
+    dnsTestButton.click();
+})();
