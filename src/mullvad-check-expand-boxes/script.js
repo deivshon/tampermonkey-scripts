@@ -14,7 +14,7 @@
     /**
      *
      * @param {number} ms
-     * @returns
+     * @returns {Promise<void>}
      */
     const sleep = async (ms) => {
         return new Promise((resolve) => setTimeout(resolve, ms));
@@ -22,8 +22,8 @@
 
     /**
      *
-     * @param {HTMLInputElement} box
-     * @returns
+     * @param {HTMLElement} box
+     * @returns {boolean}
      */
     const stillLoading = (box) => {
         return box.classList.contains("bg-loading");
@@ -31,8 +31,8 @@
 
     /**
      *
-     * @param {HTMLInputElement} box
-     * @returns
+     * @param {HTMLElement} box
+     * @returns {boolean}
      */
     const isActualBox = (box) => {
         return (
@@ -43,6 +43,7 @@
         );
     };
 
+    /** @type {HTMLElement[]} */
     let boxes = [];
     while (boxes.length !== 3) {
         boxes = Array.prototype.slice
