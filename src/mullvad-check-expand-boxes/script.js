@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         mullvad-check-expand-boxes
 // @namespace    https://github.com/deivshon
-// @version      1.0.1
+// @version      1.0.2
 // @description  Automatically expand the boxes in the Mullvad check site
 // @author       Davide Cioni
 // @match        https://mullvad.net/*/check
@@ -11,21 +11,18 @@
 "use strict";
 
 (async () => {
-    /**
-     *
-     * @param {number} ms
-     * @returns {Promise<void>}
-     */
-    const sleep = async (ms) => {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    };
+    const BOXES_AMOUNT = 3;
+    let boxesCount = 0;
+
+    /** @type {MutationObserver | null} */
+    let documentTreeObserver = null;
 
     /**
      *
      * @param {HTMLElement} box
      * @returns {boolean}
      */
-    const stillLoading = (box) => {
+    const isLoading = (box) => {
         return box.classList.contains("bg-loading");
     };
 
@@ -43,23 +40,76 @@
         );
     };
 
-    /** @type {HTMLElement[]} */
-    let boxes = [];
-    while (boxes.length !== 3) {
-        boxes = Array.prototype.slice
-            .call(document.getElementsByClassName("header"))
-            .filter((b) => isActualBox(b));
-        await sleep(100);
-    }
+    /**
+     *
+     * @param {HTMLElement} box
+     * @returns {"finished" | "loading"}
+     */
+    const check = (box) => {
+        if (isLoading(box)) {
+            return "loading";
+        }
 
-    while (boxes.length > 0) {
-        for (let i = 0; i < boxes.length; i++) {
-            if (!stillLoading(boxes[i])) {
-                boxes[i].click();
-                boxes.splice(i, 1);
-                i--;
+        box.click();
+        boxesCount++;
+        if (boxesCount >= BOXES_AMOUNT && documentTreeObserver !== null) {
+            documentTreeObserver.disconnect();
+        }
+        return "finished";
+    };
+
+    /**
+     *
+     * @param {HTMLElement} box
+     */
+    const listenBox = (box) => {
+        const classListObserver = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                const { target } = mutation;
+                if (
+                    mutation.type !== "attributes" ||
+                    !(target instanceof HTMLElement)
+                ) {
+                    continue;
+                }
+
+                if (!(target instanceof HTMLElement) || !isActualBox(target)) {
+                    continue;
+                }
+
+                if (isLoading(target)) {
+                    continue;
+                }
+
+                const result = check(target);
+                if (result === "finished") {
+                    classListObserver.disconnect();
+                }
+            }
+        });
+        classListObserver.observe(box, { attributes: true });
+    };
+
+    documentTreeObserver = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type !== "childList") {
+                continue;
+            }
+
+            for (const node of mutation.addedNodes) {
+                if (
+                    !(node instanceof HTMLElement) ||
+                    !node.classList.contains("header")
+                ) {
+                    continue;
+                }
+
+                listenBox(node);
             }
         }
-        await sleep(100);
-    }
+    });
+    documentTreeObserver.observe(document.body, {
+        subtree: true,
+        childList: true,
+    });
 })();
