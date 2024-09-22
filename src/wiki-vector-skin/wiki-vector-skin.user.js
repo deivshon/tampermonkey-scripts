@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         wiki-vector-skin
 // @namespace    https://github.com/deivshon
-// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/wiki-vector-skin/script.js
+// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/wiki-vector-skin/wiki-vector-skin.user.js
+// @updateURL    https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/wiki-vector-skin/wiki-vector-skin.user.js
 // @version      1.0.1
 // @description  Set matching Wiki's links skin to vector
 // @author       Davide Cioni

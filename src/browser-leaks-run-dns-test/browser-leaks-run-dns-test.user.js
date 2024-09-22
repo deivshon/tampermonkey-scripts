@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         browser-leaks-run-dns-test
 // @namespace    https://github.com/deivshon
-// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/browser-leaks-run-dns-test/script.js
+// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/browser-leaks-run-dns-test/browser-leaks-run-dns-test.user.js
+// @updateURL    https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/browser-leaks-run-dns-test/browser-leaks-run-dns-test.user.js
 // @version      1.0.1
 // @description  Automatically run the DNS test on browserleaks's IP page
 // @author       Davide Cioni
