@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         mullvad-check-expand-boxes
 // @namespace    https://github.com/deivshon
+// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/mullvad-check-expand-boxes/script.js
 // @version      1.0.2
 // @description  Automatically expand the boxes in the Mullvad check site
 // @author       Davide Cioni

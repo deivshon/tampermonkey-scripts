@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         youtube-persist-captions-settings
 // @namespace    https://github.com/deivshon
+// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/youtube-persist-captions-settings/script.js
 // @version      1.0.0
 // @description  Persist YouTube captions settings forever instead of the standard 30 days
 // @author       Davide Cioni
