@@ -12,8 +12,8 @@
         "paths": {
             "*": ["./*"]
         },
-        "rootDir": "./src"
+        "rootDir": "."
     },
-    "include": ["./**/*.js"],
+    "include": ["./**/*.js", "update-static-site.ts"],
     "exclude": ["node_modules"]
 }
