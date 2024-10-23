@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         svelte-docs-tweak-fonts
+// @name         svelte-docs-serif-fix
 // @namespace    https://github.com/deivshon
-// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/svelte-docs-tweak-fonts/svelte-docs-tweak-fonts.user.js
-// @updateURL    https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/svelte-docs-tweak-fonts/svelte-docs-tweak-fonts.user.js
+// @downloadURL  https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/svelte-docs-serif-fix/svelte-docs-serif-fix.user.js
+// @updateURL    https://raw.githubusercontent.com/deivshon/tampermonkey-scripts/refs/heads/main/src/svelte-docs-serif-fix/svelte-docs-serif-fix.user.js
 // @version      1.0.0
 // @description  Disable serif fonts on Svelte docs
 // @author       Davide Cioni
